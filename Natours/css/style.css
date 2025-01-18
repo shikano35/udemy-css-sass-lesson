@@ -62,6 +62,7 @@ body {
     /* 使用しなくとも良いっぽい？ */
     /* backface-visibility: hidden;    裏面を非表示にする */
     margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -122,4 +123,73 @@ body {
         opacity: 1;
         transform: translate(0);
     }
+}
+
+/* 下から上へのフェードイン */
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+/* リンクをクリックすると紫色になることがあるよね */
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;    /* 大文字にする */
+    text-decoration: none;        /* 下線を消す */
+    padding: 15px 40px;           /* 上下 左右 */
+    display: inline-block;        /* インラインブロック要素にする */
+    border-radius: 100px;         /* 角を丸くする */
+    transition: all .2s;         /* 0.2秒で変化する */
+    position: relative;
+} 
+
+.btn:hover {
+    transform: translateY(-3px);    /* 上に3pxずらす */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);    /* 影をつける(x方向 y方向 ぼかし rgba(r,g,b,透明度(20%))) */
+}
+
+/* クリックした時の挙動 */
+.btn:active {
+    transform: translateY(-1px);    /* 上に1pxずらす */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);    /* 影をつける(x方向 y方向 ぼかし rgba(r,g,b,透明度(20%))) */
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+/* ボタンが親 */
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);   /* 横に1.4倍 縦に1.6倍 */
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s;  /* 名前 時間 タイミング 遅延 */
+    animation-fill-mode: backwards;           /* アニメーションが始まる前に最初の状態に戻す(これによって、アニメーション後の画面が最初に表示されない) */
 }
