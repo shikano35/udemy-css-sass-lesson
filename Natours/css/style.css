@@ -31,6 +31,48 @@ body {
     url(../img/hero.jpg);
     background-size: cover;
     background-position: top;
+    position: relative; /* 親要素にrelativeを指定することで、子要素のposition: absolute;が効く */
 
     clip-path:polygon(0 0, 100% 0, 100% 75%, 0 100%);
+}
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);   /* 中央に配置 */
+    text-align: center;
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;      /* 大文字のテキストにする */
+    backface-visibility: hidden;
+    margin-top: 60px;
+}
+
+.heading-primary-main {
+   display: block;                          /* ブロック要素にする(改行するため) */
+    font-size: 60px;                        /* 文字サイズ */
+    font-weight: 400;                       /* 太さ */
+    letter-spacing: 35px;                   /* 文字間のスペース */
+    animation: moveInLeft 1.5s ease-out;    /* アニメーション */
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    animation: moveInRight 1.5s ease-out;
 }
