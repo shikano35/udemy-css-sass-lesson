@@ -24,6 +24,7 @@ body {
 
 .header {
     height: 95vh;
+    /* linear-gradientはグラデーション。 */
     background-image: linear-gradient(
         to right bottom,
         rgba(126, 213, 111, 0.8),
@@ -33,7 +34,7 @@ body {
     background-position: top;
     position: relative; /* 親要素にrelativeを指定することで、子要素のposition: absolute;が効く */
 
-    clip-path:polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    clip-path:polygon(0 0, 100% 0, 100% 75%, 0 100%);   /* (x y)で考える。つまり、左上、右上、右下、左下 */
 }
 
 .logo-box {
@@ -50,14 +51,16 @@ body {
     position: absolute;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);   /* 中央に配置 */
+    transform: translate(-50%, -50%);   /* 上に50%ずらす 左に50%ずらす */
     text-align: center;
 }
 
 .heading-primary {
     color: #fff;
     text-transform: uppercase;      /* 大文字のテキストにする */
-    backface-visibility: hidden;
+    /* このbackface-visibilityを使用することで、アニメーション後にある違和感を取り除ける（ここではアニメーション後に少し上に動く） */
+    /* 使用しなくとも良いっぽい？ */
+    /* backface-visibility: hidden;    裏面を非表示にする */
     margin-top: 60px;
 }
 
@@ -66,7 +69,15 @@ body {
     font-size: 60px;                        /* 文字サイズ */
     font-weight: 400;                       /* 太さ */
     letter-spacing: 35px;                   /* 文字間のスペース */
-    animation: moveInLeft 1.5s ease-out;    /* アニメーション */
+
+    /* アニメーション */
+    animation: moveInLeft;                  /* アニメーション */
+    animation-duration: 1s;               /* アニメーションの時間 */
+    /* ease-inは時間と共に加速する */
+    /* ease-outは時間と共に減速する */
+    animation-timing-function: ease-out;    /* アニメーションのタイミング */
+    /* animation-iteration-count: 3;           アニメーションの繰り返し回数 */
+    /* animation-delay: 3s;                    アニメーションの遅延 */
 }
 
 .heading-primary-sub {
@@ -74,5 +85,41 @@ body {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17.4px;
-    animation: moveInRight 1.5s ease-out;
+    animation: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+/* 左から右へのフェードイン */
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;                     /* 透明にする */
+        transform: translateX(-100px);  /* 左に100pxずらす */
+    }
+
+    80% {
+        transform: translateX(10px);    /* 右に10pxずらす */
+    }
+
+    100% {
+        opacity: 1;                     /* 不透明にする */
+        transform: translate(0);        /* ずらさない */ 
+    }
+}
+
+/* 右から左へのフェードイン */
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
