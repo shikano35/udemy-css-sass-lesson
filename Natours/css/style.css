@@ -7,19 +7,27 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+*::after,
+*::before {     /* すべての要素に対して */
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;    /* box-sizing: border-box;を継承する */
+}
+
+html {
+    font-size: 62.5%;    /* 1rem = 10px */
 }
 
 body {
     font-family: "Lato", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7;
     color: #777;
-    padding: 30px;
+    padding: 3rem;
+
+    box-sizing: border-box;
 }
 
 .header {
@@ -39,12 +47,12 @@ body {
 
 .logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
 .logo {
-    height: 35px;
+    height: 3.5rem;
 }
 
 .text-box {
@@ -61,15 +69,14 @@ body {
     /* このbackface-visibilityを使用することで、アニメーション後にある違和感を取り除ける（ここではアニメーション後に少し上に動く） */
     /* 使用しなくとも良いっぽい？ */
     /* backface-visibility: hidden;    裏面を非表示にする */
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
 .heading-primary-main {
    display: block;                          /* ブロック要素にする(改行するため) */
-    font-size: 60px;                        /* 文字サイズ */
+    font-size: 6rem;                        /* 文字サイズ */
     font-weight: 400;                       /* 太さ */
-    letter-spacing: 35px;                   /* 文字間のスペース */
+    letter-spacing: 3.5rem;                   /* 文字間のスペース */
 
     /* アニメーション */
     animation: moveInLeft;                  /* アニメーション */
@@ -83,9 +90,9 @@ body {
 
 .heading-primary-sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
     animation: moveInRight;
     animation-duration: 1s;
     animation-timing-function: ease-out;
@@ -95,11 +102,11 @@ body {
 @keyframes moveInLeft {
     0% {
         opacity: 0;                     /* 透明にする */
-        transform: translateX(-100px);  /* 左に100pxずらす */
+        transform: translateX(-10rem);  /* 左に100pxずらす */
     }
 
     80% {
-        transform: translateX(10px);    /* 右に10pxずらす */
+        transform: translateX(10rem);    /* 右に10pxずらす */
     }
 
     100% {
@@ -112,11 +119,11 @@ body {
 @keyframes moveInRight {
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80% {
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
 
     100% {
@@ -129,7 +136,7 @@ body {
 @keyframes moveInBottom {
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
 
     100% {
@@ -143,22 +150,23 @@ body {
 .btn:visited {
     text-transform: uppercase;    /* 大文字にする */
     text-decoration: none;        /* 下線を消す */
-    padding: 15px 40px;           /* 上下 左右 */
+    padding: 1.5rem 4.0rem;           /* 上下 左右 */
     display: inline-block;        /* インラインブロック要素にする */
-    border-radius: 100px;         /* 角を丸くする */
+    border-radius: 10rem;         /* 角を丸くする */
     transition: all .2s;         /* 0.2秒で変化する */
     position: relative;
+    font-size: 1.6rem;
 } 
 
 .btn:hover {
     transform: translateY(-3px);    /* 上に3pxずらす */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);    /* 影をつける(x方向 y方向 ぼかし rgba(r,g,b,透明度(20%))) */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);    /* 影をつける(x方向 y方向 ぼかし rgba(r,g,b,透明度(20%))) */
 }
 
 /* クリックした時の挙動 */
 .btn:active {
     transform: translateY(-1px);    /* 上に1pxずらす */
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);    /* 影をつける(x方向 y方向 ぼかし rgba(r,g,b,透明度(20%))) */
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);    /* 影をつける(x方向 y方向 ぼかし rgba(r,g,b,透明度(20%))) */
 }
 
 .btn-white {
@@ -172,7 +180,7 @@ body {
     display: inline-block;
     height: 100%;
     width: 100%;
-    border-radius: 100px;
+    border-radius: 10rem;
     position: absolute;
     top: 0;
     left: 0;
