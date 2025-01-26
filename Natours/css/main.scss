@@ -3,6 +3,7 @@ $color-primary-light: #7ed56f;
 $color-primary-dark: #28b485;
 
 $color-grey-dark: #777;
+$color-white: #fff;
 
 *,
 *::after,
@@ -61,7 +62,7 @@ body {
 }
 
 .heading-primary {
-    color: #fff;
+    color: $color-white;
     text-transform: uppercase;      /* 大文字のテキストにする */
     /* このbackface-visibilityを使用することで、アニメーション後にある違和感を取り除ける（ここではアニメーション後に少し上に動く） */
     /* 使用しなくとも良いっぽい？ */
@@ -167,7 +168,7 @@ body {
 }
 
 .btn--white {
-    background-color: #fff;
+    background-color: $color-white;
     color: $color-grey-dark;
 }
 
@@ -186,7 +187,7 @@ body {
 }
 
 .btn--white::after {
-    background-color: #fff;
+    background-color: $color-white;
 }
 
 .btn:hover::after {
