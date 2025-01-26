@@ -1,0 +1,181 @@
+@charset "UTF-8";
+*,
+*::after,
+*::before { /* すべての要素に対して */
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /* box-sizing: border-box;を継承する */
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+.header {
+  height: 95vh;
+  /* linear-gradientはグラデーション。 */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative; /* 親要素にrelativeを指定することで、子要素のposition: absolute;が効く */
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); /* (x y)で考える。つまり、左上、右上、右下、左下 */
+}
+
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.header__logo {
+  height: 3.5rem;
+}
+
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 上に50%ずらす 左に50%ずらす */
+  text-align: center;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase; /* 大文字のテキストにする */
+  /* このbackface-visibilityを使用することで、アニメーション後にある違和感を取り除ける（ここではアニメーション後に少し上に動く） */
+  /* 使用しなくとも良いっぽい？ */
+  /* backface-visibility: hidden;    裏面を非表示にする */
+  margin-bottom: 6rem;
+}
+
+.heading-primary--main {
+  display: block; /* ブロック要素にする(改行するため) */
+  font-size: 6rem; /* 文字サイズ */
+  font-weight: 400; /* 太さ */
+  letter-spacing: 3.5rem; /* 文字間のスペース */
+  /* アニメーション */
+  animation: moveInLeft; /* アニメーション */
+  animation-duration: 1s; /* アニメーションの時間 */
+  /* ease-inは時間と共に加速する */
+  /* ease-outは時間と共に減速する */
+  animation-timing-function: ease-out; /* アニメーションのタイミング */
+  /* animation-iteration-count: 3;           アニメーションの繰り返し回数 */
+  /* animation-delay: 3s;                    アニメーションの遅延 */
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+  animation: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+/* 左から右へのフェードイン */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0; /* 透明にする */
+    transform: translateX(-10rem); /* 左に100pxずらす */
+  }
+  80% {
+    transform: translateX(10rem); /* 右に10pxずらす */
+  }
+  100% {
+    opacity: 1; /* 不透明にする */
+    transform: translate(0); /* ずらさない */
+  }
+}
+/* 右から左へのフェードイン */
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+/* 下から上へのフェードイン */
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+/* リンクをクリックすると紫色になることがあるよね */
+.btn:link,
+.btn:visited {
+  text-transform: uppercase; /* 大文字にする */
+  text-decoration: none; /* 下線を消す */
+  padding: 1.5rem 4rem; /* 上下 左右 */
+  display: inline-block; /* インラインブロック要素にする */
+  border-radius: 10rem; /* 角を丸くする */
+  transition: all 0.2s; /* 0.2秒で変化する */
+  position: relative;
+  font-size: 1.6rem;
+}
+
+.btn:hover {
+  transform: translateY(-3px); /* 上に3pxずらす */
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* 影をつける(x方向 y方向 ぼかし rgba(r,g,b,透明度(20%))) */
+}
+
+/* クリックした時の挙動 */
+.btn:active {
+  transform: translateY(-1px); /* 上に1pxずらす */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); /* 影をつける(x方向 y方向 ぼかし rgba(r,g,b,透明度(20%))) */
+}
+
+.btn--white {
+  background-color: #fff;
+  color: #777;
+}
+
+/* ボタンが親 */
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btn--white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6); /* 横に1.4倍 縦に1.6倍 */
+  opacity: 0;
+}
+
+.btn--animated {
+  animation: moveInBottom 0.5s ease-out 0.75s; /* 名前 時間 タイミング 遅延 */
+  animation-fill-mode: backwards; /* アニメーションが始まる前に最初の状態に戻す(これによって、アニメーション後の画面が最初に表示されない) */
+}/*# sourceMappingURL=main.css.map */
