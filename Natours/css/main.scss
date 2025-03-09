@@ -4,6 +4,8 @@ $color-primary-dark: #28b485;
 
 $color-grey-dark: #777;
 $color-white: #fff;
+$color-black: #000;
+
 
 *,
 *::after,
@@ -41,24 +43,24 @@ body {
     position: relative; /* 親要素にrelativeを指定することで、子要素のposition: absolute;が効く */
 
     clip-path:polygon(0 0, 100% 0, 100% 75%, 0 100%);   /* (x y)で考える。つまり、左上、右上、右下、左下 */
-}
 
-.header__logo-box {
-    position: absolute;
-    top: 4rem;
-    left: 4rem;
-}
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
 
-.header__logo {
-    height: 3.5rem;
-}
-
-.header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);   /* 上に50%ずらす 左に50%ずらす */
-    text-align: center;
+    &__logo {
+        height: 3.5rem;
+    }
+    
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);   /* 上に50%ずらす 左に50%ずらす */
+        text-align: center;
+    }
 }
 
 .heading-primary {
@@ -68,32 +70,32 @@ body {
     /* 使用しなくとも良いっぽい？ */
     /* backface-visibility: hidden;    裏面を非表示にする */
     margin-bottom: 6rem;
-}
 
-.heading-primary--main {
-   display: block;                          /* ブロック要素にする(改行するため) */
-    font-size: 6rem;                        /* 文字サイズ */
-    font-weight: 400;                       /* 太さ */
-    letter-spacing: 3.5rem;                   /* 文字間のスペース */
-
-    /* アニメーション */
-    animation: moveInLeft;                  /* アニメーション */
-    animation-duration: 1s;               /* アニメーションの時間 */
-    /* ease-inは時間と共に加速する */
-    /* ease-outは時間と共に減速する */
-    animation-timing-function: ease-out;    /* アニメーションのタイミング */
-    /* animation-iteration-count: 3;           アニメーションの繰り返し回数 */
-    /* animation-delay: 3s;                    アニメーションの遅延 */
-}
-
-.heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    animation: moveInRight;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
+    &--main {
+        display: block;                          /* ブロック要素にする(改行するため) */
+         font-size: 6rem;                        /* 文字サイズ */
+         font-weight: 400;                       /* 太さ */
+         letter-spacing: 3.5rem;                   /* 文字間のスペース */
+     
+         /* アニメーション */
+         animation: moveInLeft;                  /* アニメーション */
+         animation-duration: 1s;               /* アニメーションの時間 */
+         /* ease-inは時間と共に加速する */
+         /* ease-outは時間と共に減速する */
+         animation-timing-function: ease-out;    /* アニメーションのタイミング */
+         /* animation-iteration-count: 3;           アニメーションの繰り返し回数 */
+         /* animation-delay: 3s;                    アニメーションの遅延 */
+     }
+     
+     &--sub {
+         display: block;
+         font-size: 2rem;
+         font-weight: 700;
+         letter-spacing: 1.75rem;
+         animation: moveInRight;
+         animation-duration: 1s;
+         animation-timing-function: ease-out;
+     }
 }
 
 /* 左から右へのフェードイン */
@@ -143,59 +145,61 @@ body {
     }
 }
 
-/* リンクをクリックすると紫色になることがあるよね */
-.btn:link,
-.btn:visited {
-    text-transform: uppercase;    /* 大文字にする */
-    text-decoration: none;        /* 下線を消す */
-    padding: 1.5rem 4.0rem;           /* 上下 左右 */
-    display: inline-block;        /* インラインブロック要素にする */
-    border-radius: 10rem;         /* 角を丸くする */
-    transition: all .2s;         /* 0.2秒で変化する */
-    position: relative;
-    font-size: 1.6rem;
-} 
+.btn {
+    /* リンクをクリックすると紫色になることがあるよね */
+    &:link,
+    &:visited {
+        text-transform: uppercase;    /* 大文字にする */
+        text-decoration: none;        /* 下線を消す */
+        padding: 1.5rem 4.0rem;           /* 上下 左右 */
+        display: inline-block;        /* インラインブロック要素にする */
+        border-radius: 10rem;         /* 角を丸くする */
+        transition: all .2s;         /* 0.2秒で変化する */
+        position: relative;
+        font-size: 1.6rem;
+    } 
 
-.btn:hover {
-    transform: translateY(-3px);    /* 上に3pxずらす */
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);    /* 影をつける(x方向 y方向 ぼかし rgba(r,g,b,透明度(20%))) */
-}
+    &:hover {
+        transform: translateY(-3px);    /* 上に3pxずらす */
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);    /* 影をつける(x方向 y方向 ぼかし rgba(r,g,b,透明度(20%))) */
 
-/* クリックした時の挙動 */
-.btn:active {
-    transform: translateY(-1px);    /* 上に1pxずらす */
-    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2);    /* 影をつける(x方向 y方向 ぼかし rgba(r,g,b,透明度(20%))) */
-}
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);   /* 横に1.4倍 縦に1.6倍 */
+            opacity: 0;
+        }
+    }
 
-.btn--white {
-    background-color: $color-white;
-    color: $color-grey-dark;
-}
+    /* クリックした時の挙動 */
+    &:active {
+        transform: translateY(-1px);    /* 上に1pxずらす */
+        box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);    /* 影をつける(x方向 y方向 ぼかし rgba(r,g,b,透明度(20%))) */
+    }
 
-/* ボタンが親 */
-.btn::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-}
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+        
+        &::after {
+            background-color: $color-white;
+        }
+    }
 
-.btn--white::after {
-    background-color: $color-white;
-}
+    /* ボタンが親 */
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
 
-.btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);   /* 横に1.4倍 縦に1.6倍 */
-    opacity: 0;
-}
-
-.btn--animated {
-    animation: moveInBottom .5s ease-out .75s;  /* 名前 時間 タイミング 遅延 */
-    animation-fill-mode: backwards;           /* アニメーションが始まる前に最初の状態に戻す(これによって、アニメーション後の画面が最初に表示されない) */
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;  /* 名前 時間 タイミング 遅延 */
+        animation-fill-mode: backwards;           /* アニメーションが始まる前に最初の状態に戻す(これによって、アニメーション後の画面が最初に表示されない) */
+    }
 }
