@@ -1,0 +1,46 @@
+/* 左から右へのフェードイン */
+@keyframes moveInLeft {
+  0% {
+      opacity: 0;                     /* 透明にする */
+      transform: translateX(-10rem);  /* 左に100pxずらす */
+  }
+
+  80% {
+      transform: translateX(10rem);    /* 右に10pxずらす */
+  }
+
+  100% {
+      opacity: 1;                     /* 不透明にする */
+      transform: translate(0);        /* ずらさない */ 
+  }
+}
+
+/* 右から左へのフェードイン */
+@keyframes moveInRight {
+  0% {
+      opacity: 0;
+      transform: translateX(10rem);
+  }
+
+  80% {
+      transform: translateX(-1rem);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translate(0);
+  }
+}
+
+/* 下から上へのフェードイン */
+@keyframes moveInBottom {
+  0% {
+      opacity: 0;
+      transform: translateY(3rem);
+  }
+
+  100% {
+      opacity: 1;
+      transform: translate(0);
+  }
+}

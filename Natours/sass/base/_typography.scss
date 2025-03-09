@@ -1,0 +1,43 @@
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    /* font-size: 16px; */
+    line-height: 1.7;
+    color: $color-grey-dark;
+    padding: 3rem;
+}
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;      /* 大文字のテキストにする */
+  /* このbackface-visibilityを使用することで、アニメーション後にある違和感を取り除ける（ここではアニメーション後に少し上に動く） */
+  /* 使用しなくとも良いっぽい？ */
+  /* backface-visibility: hidden;    裏面を非表示にする */
+  margin-bottom: 6rem;
+
+  &--main {
+      display: block;                          /* ブロック要素にする(改行するため) */
+       font-size: 6rem;                        /* 文字サイズ */
+       font-weight: 400;                       /* 太さ */
+       letter-spacing: 3.5rem;                   /* 文字間のスペース */
+   
+       /* アニメーション */
+       animation: moveInLeft;                  /* アニメーション */
+       animation-duration: 1s;               /* アニメーションの時間 */
+       /* ease-inは時間と共に加速する */
+       /* ease-outは時間と共に減速する */
+       animation-timing-function: ease-out;    /* アニメーションのタイミング */
+       /* animation-iteration-count: 3;           アニメーションの繰り返し回数 */
+       /* animation-delay: 3s;                    アニメーションの遅延 */
+   }
+   
+   &--sub {
+       display: block;
+       font-size: 2rem;
+       font-weight: 700;
+       letter-spacing: 1.75rem;
+       animation: moveInRight;
+       animation-duration: 1s;
+       animation-timing-function: ease-out;
+   }
+}

@@ -1,0 +1,15 @@
+*,
+*::after,
+*::before {     /* すべての要素に対して */
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;    /* box-sizing: border-box;を継承する */
+}
+
+html {
+    font-size: 62.5%;    /* 1rem = 10px */
+}
+
+body {
+    box-sizing: border-box;
+}
