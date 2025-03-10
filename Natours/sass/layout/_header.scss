@@ -10,7 +10,7 @@
   background-position: top;
   position: relative; /* 親要素にrelativeを指定することで、子要素のposition: absolute;が効く */
 
-  clip-path:polygon(0 0, 100% 0, 100% 75%, 0 100%);   /* (x y)で考える。つまり、左上、右上、右下、左下 */
+  clip-path:polygon(0 0, 100% 0, 100% 75vh, 0 100%);   /* (x y)で考える。つまり、左上、右上、右下、左下 */
 
   &__logo-box {
       position: absolute;
