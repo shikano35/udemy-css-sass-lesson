@@ -9,7 +9,7 @@
       border-radius: 10rem;         /* 角を丸くする */
       transition: all .2s;         /* 0.2秒で変化する */
       position: relative;
-      font-size: 1.6rem;
+      font-size: $default-font-size;
   } 
 
   &:hover {
@@ -55,4 +55,29 @@
       animation: moveInBottom .5s ease-out .75s;  /* 名前 時間 タイミング 遅延 */
       animation-fill-mode: backwards;           /* アニメーションが始まる前に最初の状態に戻す(これによって、アニメーション後の画面が最初に表示されない) */
   }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+        transform: translateY(0px);
+    }
 }
